@@ -1,68 +1,61 @@
-body {
-    font-size: 16px;
-    background-color: bisque;
-    font-family: 'Courier New', Courier, monospace;
-    color: #fff;
-    margin: 30px;
+
+body > table{
+    width: 80%;
 }
 
-/** HEADER **/
-#header-nav {
-    background-color: coral;
-    border-radius: 0;
-    border: 0;
-    height: auto;
+table{
+    border-collapse: collapse;
 }
-.navbar-brand h1{ /*Numele restaurantului */
-    font-family: 'Courier New', Courier, monospace;
-    color: rgb(33, 14, 141);
-    font-size: 1.9em;
-    text-transform: uppercase;
-    font-weight: bold;
-    text-shadow: 1px 1px 1px #222;
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: .75;
+table.list{
+    width:100%;
 }
-.navbar-brand a:hover, .navbar-brand a:focus {
-    text-decoration: none;
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
 }
-#nav-list{
-    margin-top: 10px;
+tr:nth-child(even),table.list thead>tr {
+    background-color: #dddddd;
 }
-#nav-list a{
-    color:  rgb(33, 14, 141) ;
-    text-align: center;
-    background-color: coral;
+
+input[type=text], input[type=number] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
-#nav-list a:hover{
-    background: #E7E7E7;
+
+input[type=submit]{
+    width: 30%;
+    background-color: #ddd;
+    color: #000;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
-#nav-list a span {
-    font-size: 1.8em;
+
+form div.form-action-buttons{
+    text-align: right;
 }
-#titlepage {
-    color: rgb(33, 14, 141) ;
-    font-size: xx-large;
-    font-style: normal;
-    font-weight: bold;
-    font-family: 'Courier New', Courier, monospace;
-  }
-.menu-item-description{
-    background-color:coral;
-    margin-right: 35px;
-    margin-left: 35px;
-    font-family: 'Courier New', Courier, monospace;
+
+a{
+    cursor: pointer;
+    text-decoration: underline;
+    color: #0000ee;
+    margin-right: 4px;
 }
-.menu-item-details {
-    background-color: coral;
-    color: black;
-    margin-top: -15px;
-   }
-h3 {
-    color:rgb(33, 14, 141);
-    font-size: xx-large;
-    font-style: unset;
-    font-weight: bold;
-    font-family: 'Courier New', Courier, monospace;
-    } 
+
+label.validation-error{
+    color:   red;
+    margin-left: 5px;
+}
+
+.hide{
+    display:none;
+}

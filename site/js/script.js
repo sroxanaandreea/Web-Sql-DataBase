@@ -2,7 +2,8 @@ var selectedRow = null //initializez selectedRow cu NULL.
 
 //Functia foloseste valorile din campurile text
 function onFormSubmit() {
-    //if (validate()) {
+    //Doar daca valoarea returnata de functia isValid va fi true vom executa operatia de inserare
+    if (validate()) {
         var formData = readFormData(); //stocam in variabila formData apelul functiei readFromData()
         if (selectedRow == null) //Daca variabila este NULL atunci se va efectua
                                 //operatia de inserare
@@ -10,7 +11,7 @@ function onFormSubmit() {
     else                        //Altfel se va efectua operatia de update.
            updateRecord(formData);
         resetForm();
-    //}
+    }
 }
 //Functia citeste valorile din campurile text
 function readFormData() {
@@ -33,19 +34,25 @@ function insertNewRecord(data) {
                                                 //deaorece cu fiecare nou element inserat, lungimea va creste
     cell1 = newRow.insertCell(0);
     cell1.innerHTML = data.nume;
+
     cell2 = newRow.insertCell(1);
     cell2.innerHTML = data.pret;
+
     cell3 = newRow.insertCell(2);
     cell3.innerHTML = data.cantitate;
+
     cell4 = newRow.insertCell(3);
     cell4.innerHTML = data.descriere;
+
     cell5 = newRow.insertCell(4);
     cell5.innerHTML = data.comentarii;
+
     cell6 = newRow.insertCell(5);
     cell6.innerHTML = data.rating;
+
     //inseram inca o celula pentru butonul de edit si delete
     //folosim ` pentru a separa butoanele pentru o mai buna intelegere a textului
-    //cell7.newRow.insertCell(6)
+    cell6 = newRow.insertCell(6);
     cell6.innerHTML = `<a onClick="onEdit(this)">Edit</a>
                        <a onClick="onDelete(this)">Delete</a>`;
 }
@@ -92,17 +99,38 @@ function onDelete(td) {
         resetForm(); //apelam functia de reset.
     }
 }
-/*
+
 function validate() {
-    isValid = true;
-    if (document.getElementById("fullName").value == "") {
+    isValid = true; //valoarea buleana
+    //Verificam daca campurile text pentru nume si pret sunt goale
+    //Daca da, atunci valoarea isValid va fi setata pe Fals
+    if ((document.getElementById("nume").value == "") || (document.getElementById("pret").value == "")) {
         isValid = false;
-        document.getElementById("fullNameValidationError").classList.remove("hide");
+        document.getElementById("NumeValidationError").classList.remove("hide");
+        document.getElementById("pretValidationError").classList.remove("hide");
     } else {
         isValid = true;
-        if (!document.getElementById("fullNameValidationError").classList.contains("hide"))
-            document.getElementById("fullNameValidationError").classList.add("hide");
+        //Daca valoarea isValid = true, verificam daca exista clasa "hide" in label-ul pentru nume si pret
+        //Daca nu exista, vom introduce clasa "hide"
+        if ((!document.getElementById("NumeValidationError").classList.contains("hide")) || (!document.getElementById("pretValidationError").classList.contains("hide"))){
+            document.getElementById("NumeValidationError").classList.add("hide");
+            document.getElementById("pretValidationError").classList.add("hide");
+        }
     }
     return isValid;
 }
-*/
+
+function hilightRow(){
+    var index,
+        table = document.getElementById("list");
+    for (var i = 0; i< table.rows.length; i++)
+    {
+        table.rows[i].onclick = function()
+        {
+            index = this.rowIndex;
+            this.classList.toggle("selected");
+            console.log(index);
+        }
+    }
+}
+hilightRow();

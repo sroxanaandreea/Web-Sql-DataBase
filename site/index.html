@@ -10,23 +10,24 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
       <body>
-        <table>
+        <h1>Gestionare produse</h1>
+        <table class="table table-sorttable">
           <tr>
             <td>
               <!--autocomplete="off" - previne autocompletul petru campurile cu text de la copletarile anterioare.
               //onsubmit="event.preventDefault() - previne reload-ul site-ului la apasarea butonului submit.-->
               <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
                 <div>
-                  <label>Nume*</label><label class="validation-error hide" id="fullNameValidationError">This field is required.</label>
+                  <label>Nume*</label><label class="validation-error hide" id="NumeValidationError">This field is required.</label>
                     <input type="text" name="nume" id="nume">
                 </div>
                 <div>
-                  <label>Pret</label>
+                  <label>Pret*</label><label class="validation-error hide" id="pretValidationError">This field is required.</label>
                      <input type="text" name="pret" id="pret">
                 </div>
                 <div>
                   <label>Cantitate</label>
-                    <input type="text" name="cantiate" id="cantitate">
+                    <input type="number" name="cantiate" id="cantitate">
                 </div>
                 <div>
                   <label>Descriere</label>
@@ -38,7 +39,13 @@
                 </div>
                 <div>
                   <label>Rating</label>
-                    <input type="text" name="rating" id="rating">
+                    <select type="text" name="rating" id="rating">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
                 </div>
 
                 <div  class="form-action-buttons">
